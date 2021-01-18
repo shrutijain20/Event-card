@@ -1,0 +1,256 @@
+*{
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	font-family: "montserrat";
+	box-sizing: border-box;
+}
+
+body{
+	background: #050801;
+	min-height: 100vh;
+	flex-direction: column;
+	font-size: 24px;
+}
+
+.middle{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.card{
+	cursor: pointer;
+	width: 340px;
+	height: 480px;
+}
+
+.front,.back{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	backface-visibility: hidden;
+	position: absolute;
+	transition: transform .3s linear;
+}
+
+
+/*.front span {
+	color: #fff;
+	filter:hue-rotate(290deg);
+}*/
+
+.text-front{
+	color: #050801;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-box-reflect: below 1px linear-gradient(transparent,#0005);
+}
+.front{
+	background : #03e9f4; 
+	background: linear-gradient(90deg,transparent,#03e9f4);
+	display: inline-block;
+	/*letter-spacing: 4px;*/
+	transition: 0.5s;
+	transform: perspective(600px) rotateY(0deg);
+}
+
+.back{
+	background: #E0FFFF;
+	transform: perspective(600px) rotateY(180deg);
+}
+
+.back-content{
+	color: #2c3e50;
+	text-align: center;
+	width: 100%;
+}
+
+.sm{
+	margin: 20px 0;
+}
+
+.sm a{
+	display: inline-flex;
+	width: 40px;
+	height: 40px;
+	justify-content: center;
+	align-items: center;
+	color: #2c3e50;
+	font-size: 18px;
+	transition: 0.4s;
+	border-radius: 50%;
+}
+
+.sm a:hover{
+	background: #2c3e50;
+	color: white;
+}
+
+.card:hover > .front{
+	transform: perspective(600px) rotateY(-180deg);
+}
+
+.card:hover > .back{
+	transform: perspective(600px) rotateY(0deg);
+}
+
+.card:hover {
+	/*background: #03e9f4;*/
+	color: #050801;
+	box-shadow: 0 0 5px #03e9f4,
+				0 0 25px #03e9f4,
+				0 0 50px #03e9f4,
+				0 0 200px #03e9f4;
+	/*filter:hue-rotate(290deg);*/
+}
+
+.front span:nth-child(1){
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 488px;
+	background: linear-gradient(90deg,transparent,#03e9f4);
+	animation: animate1 1s linear infinite;
+}
+@keyframes animate1
+{
+	0%
+	{
+		left:-100%;
+	}
+	50%,100%{
+		left:100%;
+	}
+}
+.front span:nth-child(2){
+	top: -100%;
+	right: 0;
+	width: 348px;
+	height: 100%;
+	background: linear-gradient(180deg,transparent,#03e9f4);
+	animation: animate2 2s linear infinite;
+	animation-delay: 0.25s; 
+}
+@keyframes animate2
+{
+	0%
+	{
+		top:-100%;
+	}
+	50%,100%{
+		top:100%;
+	}
+}
+.front span:nth-child(3){
+	bottom: 0;
+	right: -100%;
+	width: 100%;
+	height: 488px;
+	background: linear-gradient(270deg,transparent,#03e9f4);
+	animation: animate3 1s linear infinite;
+	animation-delay: 0.5s;
+}
+@keyframes animate3
+{
+	0%
+	{
+		right:-100%;
+	}
+	50%,100%{
+		right:100%;
+	}
+}
+.front span:nth-child(4){
+	bottom: -100%;
+	left: 0;
+	width: 348px;
+	height: 100%;
+	background: linear-gradient(360deg,transparent,#03e9f4);
+	animation: animate4 1s linear infinite;
+	animation-delay: 0.75s;
+}
+@keyframes animate4
+{
+	0%
+	{
+		bottom:-100%;
+	}
+	50%,100%{
+		bottom:100%;
+	}
+}
+
+.btn:link,
+.btn:visited {
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 1rem 4.0rem;
+	margin-top: 1rem;
+	display: inline-block;
+	border-radius: 10.0rem;
+	transition: all .2s;
+	position: relative;
+	font-size: 1.6rem;
+}
+
+.btn:hover {
+	transform: translateY(-.3rem);
+	box-shadow: 0 1.0rem 2.0rem rgba(0,0,0,.2);
+}
+
+.btn:active{
+	transform: translateY(-.1rem);
+	box-shadow: 0 .5rem 1.0rem rgba(0,0,0,.2);
+}
+
+.btn-white{
+	background-color: #0cbaba;
+background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+
+	color: #fff;
+}
+
+.btn::after{
+	content: "";
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	border-radius: 10.0rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	transition: all .4s;
+}
+
+.btn-white::after{
+	background-color: #0cbaba;
+background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+;
+}
+
+.btn:hover::after{
+	transform: scaleX(1.4) scaleY(1.6);
+	opacity: 0;
+}
+
+.btn-animated{
+	animation: moveInBottom 1s ease-out .75s;
+	animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom{
+	0%{
+		opacity: 0;
+		transform: translateY(3rem);
+	}
+
+	100%{
+		opacity: 1;
+		transform: translate(0);
+	}
+}
